@@ -17,11 +17,18 @@
       name="shuffle"
     >
       <NewsArticle
-        v-for="article of getSortedArticles"
+        v-for="article of getFilteredArticles"
         :key="article.id"
         v-bind="article"
       />
     </transition-group>
+
+    <p
+      v-if="noArticles"
+      class="news-page__warning"
+    >
+      No articles found
+    </p>
   </section>
 </template>
 
@@ -39,7 +46,10 @@ export default {
   },
   computed: {
     ...mapState('news', ['sortType']),
-    ...mapGetters('news', ['getSortedArticles']),
+    ...mapGetters('news', ['getFilteredArticles']),
+    noArticles () {
+      return !this.getFilteredArticles?.length
+    },
   },
   methods: {
     ...mapActions('news', ['toggleSorting']),
@@ -76,6 +86,12 @@ export default {
     @media ($minDesktop) {
       gap: 72px 30px;
     }
+  }
+
+  &__warning {
+    margin: 50px auto;
+    font-size: 20px;
+    text-align: center;
   }
 
   & .shuffle-move {

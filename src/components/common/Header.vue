@@ -2,19 +2,24 @@
   <header class="main-header">
     <MainLogo />
 
-    <SearchIcon />
+    <SearchField @input="searchArticle" />
   </header>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import MainLogo from '@C/ui/icons/MainLogo'
-import SearchIcon from '@C/ui/icons/SearchIcon'
+import SearchField from '@C/ui/SearchField'
 
 export default {
   name: 'MainHeader',
   components: {
     MainLogo,
-    SearchIcon,
+    SearchField,
+  },
+  methods: {
+    ...mapActions('news', ['searchArticle']),
   },
 }
 </script>

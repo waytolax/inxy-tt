@@ -5,6 +5,7 @@ export default {
 
   state: () => ({
     sortType: 'DESC',
+    searchQuery: '',
 
     articles: [
       {
@@ -68,6 +69,9 @@ export default {
     SET_SORTING (state, type) {
       state.sortType = type
     },
+    SET_SEARCH_QUERY (state, query) {
+      state.searchQuery = query
+    },
   },
 
   actions: {
@@ -76,6 +80,9 @@ export default {
       const updatedType = sortType === 'DESC' ? 'ASC' : 'DESC'
 
       commit('SET_SORTING', updatedType)
+    },
+    searchArticle ({ commit }, query) {
+      commit('SET_SEARCH_QUERY', query)
     },
   },
 
@@ -91,6 +98,14 @@ export default {
           return getDate(a.date) - getDate(b.date)
         }
       })
+    },
+    getFilteredArticles: (state, getters) => {
+      const articles = getters.getSortedArticles
+      const { searchQuery } = state
+
+      return articles.filter(item =>
+        item.title?.toLowerCase()?.includes(searchQuery),
+      )
     },
   },
 }
