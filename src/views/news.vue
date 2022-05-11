@@ -5,32 +5,44 @@
         Latest News
       </h1>
 
-      <!-- date -->
-      sort
+      <SortControls
+        :sort-type="sortType"
+        @sort="toggleSorting"
+      />
     </div>
 
-    <div class="news-page__list">
+    <transition-group
+      class="news-page__list"
+      tag="div"
+      name="shuffle"
+    >
       <NewsArticle
-        v-for="article of articles"
+        v-for="article of getSortedArticles"
         :key="article.id"
         v-bind="article"
       />
-    </div>
+    </transition-group>
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
+import SortControls from '@C/ui/SortControls'
 import NewsArticle from '@C/pages/news/NewsArticle'
 
 export default {
   name: 'NewsPage',
   components: {
+    SortControls,
     NewsArticle,
   },
   computed: {
-    ...mapState('news', ['articles']),
+    ...mapState('news', ['sortType']),
+    ...mapGetters('news', ['getSortedArticles']),
+  },
+  methods: {
+    ...mapActions('news', ['toggleSorting']),
   },
 }
 </script>
@@ -64,6 +76,10 @@ export default {
     @media ($minDesktop) {
       gap: 72px 30px;
     }
+  }
+
+  & .shuffle-move {
+    transition: transform 0.5s;
   }
 }
 </style>

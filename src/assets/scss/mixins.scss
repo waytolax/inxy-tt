@@ -29,3 +29,10 @@
     line-height: 32px;
   }
 }
+
+@mixin reset-btn {
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
