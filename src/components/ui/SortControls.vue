@@ -1,8 +1,8 @@
 <template>
   <div class="sort-controls">
-    <span class="sort-controls__date">
+    <time class="sort-controls__date">
       {{ todayDate }}
-    </span>
+    </time>
 
     <button
       :class="[
