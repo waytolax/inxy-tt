@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <MainLogo />
+    <MainLogo class="main-header__logo" />
 
     <SearchField @input="searchArticle" />
   </header>
@@ -30,5 +30,10 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 37px;
+
+  &__logo {
+    width: 111px;
+    height: auto;
+  }
 }
 </style>

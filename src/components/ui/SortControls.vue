@@ -52,10 +52,16 @@ export default {
     margin-right: 8px;
     // styles not from UI kit
     font-family: Arial;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 10px;
+    line-height: 18px;
     font-weight: $bold;
     color: black;
+    white-space: nowrap;
+
+    @media ($minTablet) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__button {

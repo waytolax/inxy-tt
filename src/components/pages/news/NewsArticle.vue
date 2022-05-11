@@ -11,9 +11,9 @@
     </h2>
 
     <p class="news-article__info">
-      <span class="news-article__date">
+      <time class="news-article__date">
         {{ date }}
-      </span>
+      </time>
       <span>
         {{ newsSource }}
       </span>

@@ -72,6 +72,7 @@ export default {
 
   &__title {
     @include h1;
+    white-space: nowrap;
   }
 
   &__list {
