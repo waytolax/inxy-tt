@@ -1,6 +1,6 @@
 <template>
   <footer class="main-footer">
-    main footer
+    Copyright 2022 News Portal
   </footer>
 </template>
 
@@ -12,5 +12,15 @@ export default {
 
 <style lang="scss">
 .main-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 83px;
+  background: $lightGrey;
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: $bold;
+  color: $black-20;
 }
 </style>
